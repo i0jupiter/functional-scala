@@ -498,9 +498,9 @@ object higher_order {
       ( l.run(input) match {
         case Left(e1) => r(e1).run(input) match {
           case Left(e2) => Left(e1, e2)
-          case Right((input, b)) => Right((input, Right(b)))
+          case Right((in, b)) => Right((in, Right(b)))
         }
-        case Right((input, a)) => Right((input, Left(a)))
+        case Right((inp, a)) => Right((inp, Left(a)))
       }) : Either[(E1, E2), (String, Either[A, B])]
     )
   case class Parser[+E, +A](run: String => Either[E, (String, A)])
